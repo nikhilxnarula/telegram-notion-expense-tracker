@@ -27,6 +27,7 @@ ALLOWED_CHAT_IDS = {
     if part.strip()
 }
 
+
 def _normalize_notion_id(raw: str) -> str:
     """Accept a bare id, a dashed UUID, or a full Notion URL.
 
@@ -49,8 +50,11 @@ def _normalize_notion_id(raw: str) -> str:
 NOTION_API_KEY = _required("NOTION_API_KEY")
 NOTION_DATABASE_ID = _normalize_notion_id(_required("NOTION_DATABASE_ID"))
 
-GEMINI_API_KEY = _required("GEMINI_API_KEY")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+# --- Amazon Bedrock ---
+# Credentials come from the standard boto3 chain: env vars, shared profile,
+# or an attached role. Nothing AWS-credential-shaped is read here on purpose.
+AWS_REGION = os.getenv("AWS_REGION") or os.getenv("AWS_DEFAULT_REGION") or "us-east-1"
+BEDROCK_MODEL_ID = _required("BEDROCK_MODEL_ID")
 
 TIMEZONE = os.getenv("TIMEZONE", "Asia/Kolkata")
 CURRENCY_SYMBOL = os.getenv("CURRENCY_SYMBOL", "Rs")
