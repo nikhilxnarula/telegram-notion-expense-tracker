@@ -1,0 +1,6 @@
+Name, Amount, Date and Category
+
+-> aistudio.google.com
+-> put on github
+-> run scripts one by one
+-> put Categories and ids
